@@ -8,10 +8,6 @@ import "./helpers/external_links.js";
 // Everything below is just to show you how it works. You can delete all of it.
 // ----------------------------------------------------------------------------
 
-import { remote } from "electron";
-import jetpack from "fs-jetpack";
-import env from "env";
-
 (function () {
   var holder = document.getElementById('drag-file');
 
@@ -39,7 +35,7 @@ import env from "env";
         const f = e.dataTransfer.files[i];
         document.body.style.cursor='progress';
         var extensao= path.extname(f.name);
-        document.getElementById('drag-file').innerHTML='Downloading...'
+        document.getElementById('drag-file').innerHTML='Downloading subtile for '+ f.name;
         var name= f.name.replace(extensao,'');
         var dir= path.dirname(f.path);
         var subdb = new SubDb();
