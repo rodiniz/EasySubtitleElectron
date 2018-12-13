@@ -31,9 +31,15 @@ import env from "env";
         e.preventDefault();
         var SubDb = require("subdb");
         var path = require('path');
-        const f = e.dataTransfer.files[0];
+
+        for(var i=0; i < e.dataTransfer.files.length;i++){
+
+
+
+        const f = e.dataTransfer.files[i];
         document.body.style.cursor='progress';
         var extensao= path.extname(f.name);
+        document.getElementById('drag-file').innerHTML='Downloading...'
         var name= f.name.replace(extensao,'');
         var dir= path.dirname(f.path);
         var subdb = new SubDb();
@@ -61,14 +67,16 @@ import env from "env";
                     return false;
                   }
 
-                    alert('Subtitle file saved with success !!');
-                    document.body.style.cursor='pointer';
+
                 });
 
             });
         });
+      }
+      alert('Subtitle file saved with success !!');
 
-
+      document.body.style.cursor='pointer';
+      document.getElementById('drag-file').innerHTML='<p>Drag your files here</p>'
 
   };
 })();
